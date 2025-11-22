@@ -386,6 +386,77 @@
             font-size: 14px;
         }
 
+        .usb-guide {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .usb-image {
+            flex: 1;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .usb-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .usb-steps {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .datasheet-section {
+            margin: 20px 0;
+        }
+
+        .datasheet-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .datasheet-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .datasheet-card p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
         @media (max-width: 768px) {
             .app-container {
                 grid-template-columns: 1fr;
@@ -395,6 +466,9 @@
             }
             .protocol-grid {
                 grid-template-columns: 1fr;
+            }
+            .usb-guide {
+                flex-direction: column;
             }
         }
     </style>
@@ -619,6 +693,10 @@
                     <div id="modelDetails">
                         <!-- Model details will appear here -->
                     </div>
+
+                    <div id="datasheetSection" class="datasheet-section">
+                        <!-- Datasheets will appear here -->
+                    </div>
                 </div>
 
                 <!-- Firmware Section -->
@@ -652,8 +730,89 @@
 
                 <!-- USB Protocols Section -->
                 <div id="usb-protocols" class="content-section" style="display:none;">
-                    <h2><i class="fas fa-usb"></i> USB Protocols</h2>
-                    <!-- USB protocols content from previous version -->
+                    <h2><i class="fas fa-usb"></i> USB Protocols & Connection Guide</h2>
+                    
+                    <div class="usb-guide">
+                        <div class="usb-image">
+                            <div style="text-align: center; color: #666;">
+                                <i class="fas fa-usb" style="font-size: 100px; margin-bottom: 20px;"></i>
+                                <p>USB Connection Diagram</p>
+                                <p>Connect USB cable to service port</p>
+                            </div>
+                        </div>
+                        <div class="usb-steps">
+                            <h3>How to Connect USB to TV</h3>
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div>
+                                    <h4>Locate Service Port</h4>
+                                    <p>Find the USB service port on the back or side of the TV</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div>
+                                    <h4>Use Proper Cable</h4>
+                                    <p>Use a high-quality USB 2.0 or 3.0 cable for stable connection</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div>
+                                    <h4>Connect to Computer</h4>
+                                    <p>Connect the other end to your computer's USB port</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div>
+                                    <h4>Start Detection</h4>
+                                    <p>Click "Start Auto Detection" in the Auto Detect section</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="protocol-grid">
+                        <div class="protocol-card">
+                            <h4><i class="fas fa-microchip"></i> USB 2.0 Protocol</h4>
+                            <p>Standard protocol for most TVs manufactured before 2015</p>
+                            <ul>
+                                <li>Data Transfer: 480 Mbps</li>
+                                <li>Power: 5V, 500mA</li>
+                                <li>Compatibility: Universal</li>
+                            </ul>
+                        </div>
+                        <div class="protocol-card">
+                            <h4><i class="fas fa-bolt"></i> USB 3.0 Protocol</h4>
+                            <p>Enhanced protocol for modern smart TVs</p>
+                            <ul>
+                                <li>Data Transfer: 5 Gbps</li>
+                                <li>Power: 5V, 900mA</li>
+                                <li>Compatibility: High-speed devices</li>
+                            </ul>
+                        </div>
+                        <div class="protocol-card">
+                            <h4><i class="fas fa-tools"></i> Service Mode Protocol</h4>
+                            <p>Special protocol for TV service and diagnostics</p>
+                            <ul>
+                                <li>Access to service menu</li>
+                                <li>Firmware flashing</li>
+                                <li>Hardware diagnostics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="protocol-card">
+                        <h4>USB Connection Troubleshooting</h4>
+                        <ul>
+                            <li>Ensure TV is in service mode before connecting</li>
+                            <li>Try different USB cables if connection fails</li>
+                            <li>Check USB port for physical damage</li>
+                            <li>Restart both TV and computer if detection fails</li>
+                            <li>Update USB drivers on your computer</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -691,7 +850,8 @@
                             'version': 'T-KTSUC-1234.5',
                             'file': 'samsung_ue32t4300_v1234.bin',
                             'size': '450MB'
-                        }
+                        },
+                        datasheets: ['Power Supply Schematic', 'Main Board Layout', 'Service Manual']
                     },
                     'UE43T5300': {
                         type: 'LED Smart TV',
@@ -719,7 +879,8 @@
                             'version': 'T-KTSUC-2345.6',
                             'file': 'samsung_ue43t5300_v2345.bin',
                             'size': '480MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'T-Con Board Guide']
                     },
                     'QE55Q60R': {
                         type: 'QLED 4K TV',
@@ -747,9 +908,68 @@
                             'version': 'T-KTSUC-3456.7',
                             'file': 'samsung_qe55q60r_v3456.bin',
                             'size': '520MB'
-                        }
+                        },
+                        datasheets: ['QLED Service Manual', 'Main Board Schematic', 'Power Supply Diagram']
+                    },
+                    'UE65TU7000': {
+                        type: 'Crystal UHD 4K TV',
+                        size: '65 inch',
+                        resolution: '4K UHD',
+                        year: '2021',
+                        panel: 'LED',
+                        smart_platform: 'Tizen',
+                        power: {
+                            standby: '3.3V',
+                            main: '24V',
+                            backlight: '36V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 24V': '24V ±1V',
+                            'Backlight': '36V ±2V',
+                            'T-Con VGH': '26V',
+                            'T-Con VGL': '-6V',
+                            'Audio': '16V'
+                        },
+                        common_issues: ['Backlight failure', 'Power supply', 'Main board IC'],
+                        firmware: {
+                            'version': 'T-KTSUC-4567.8',
+                            'file': 'samsung_ue65tu7000_v4567.bin',
+                            'size': '500MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Board Guide', 'Main Board Layout']
+                    },
+                    'UE50AU7000': {
+                        type: 'Crystal UHD 4K TV',
+                        size: '50 inch',
+                        resolution: '4K UHD',
+                        year: '2022',
+                        panel: 'LED',
+                        smart_platform: 'Tizen',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '25V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power board failure', 'Backlight strips', 'T-Con board'],
+                        firmware: {
+                            'version': 'T-KTSUC-5678.9',
+                            'file': 'samsung_ue50au7000_v5678.bin',
+                            'size': '490MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Schematic', 'T-Con Board Guide']
                     }
-                    // Add 277 more Samsung models...
+                    // Add 275 more Samsung models...
                 }
             },
             'lg': {
@@ -781,7 +1001,8 @@
                             'version': '03.20.45',
                             'file': 'lg_32lm6300_032045.bin',
                             'size': '420MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'Main Board Guide']
                     },
                     '55UM7100': {
                         type: 'LED 4K TV',
@@ -809,9 +1030,161 @@
                             'version': '03.25.60',
                             'file': 'lg_55um7100_032560.bin',
                             'size': '460MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Diagram', 'Main Board Layout']
+                    },
+                    '65NANO80': {
+                        type: 'NanoCell 4K TV',
+                        size: '65 inch',
+                        resolution: '4K UHD',
+                        year: '2022',
+                        panel: 'NanoCell',
+                        smart_platform: 'WebOS',
+                        power: {
+                            standby: '3.3V',
+                            main: '24V',
+                            backlight: '48V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 24V': '24V ±1V',
+                            'Backlight': '48V ±3V',
+                            'T-Con VGH': '28V',
+                            'T-Con VGL': '-7V',
+                            'Audio': '18V'
+                        },
+                        common_issues: ['NanoCell panel', 'Main board', 'Power supply'],
+                        firmware: {
+                            'version': '03.30.75',
+                            'file': 'lg_65nano80_033075.bin',
+                            'size': '480MB'
+                        },
+                        datasheets: ['NanoCell Service Manual', 'Power Board Schematic', 'Main Board Guide']
+                    },
+                    '43UP7500': {
+                        type: '4K UHD TV',
+                        size: '43 inch',
+                        resolution: '4K UHD',
+                        year: '2021',
+                        panel: 'IPS',
+                        smart_platform: 'WebOS',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '25V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power board failure', 'Backlight strips', 'Main board IC'],
+                        firmware: {
+                            'version': '03.22.50',
+                            'file': 'lg_43up7500_032250.bin',
+                            'size': '440MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Schematic', 'Main Board Layout']
                     }
-                    // Add 218 more LG models...
+                    // Add 216 more LG models...
+                }
+            },
+            'sony': {
+                name: 'Sony',
+                models: {
+                    'KD43X70': {
+                        type: '4K HDR TV',
+                        size: '43 inch',
+                        resolution: '4K UHD',
+                        year: '2021',
+                        panel: 'LED',
+                        smart_platform: 'Android TV',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '25V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power supply', 'Backlight failure', 'Android system'],
+                        firmware: {
+                            'version': 'PKG6.2665.0000',
+                            'file': 'sony_kd43x70_pkg62665.bin',
+                            'size': '520MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'Android System Guide']
+                    },
+                    'KD55X80J': {
+                        type: '4K HDR TV',
+                        size: '55 inch',
+                        resolution: '4K UHD',
+                        year: '2022',
+                        panel: 'LED',
+                        smart_platform: 'Android TV',
+                        power: {
+                            standby: '3.3V',
+                            main: '24V',
+                            backlight: '36V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 24V': '24V ±1V',
+                            'Backlight': '36V ±2V',
+                            'T-Con VGH': '26V',
+                            'T-Con VGL': '-6V',
+                            'Audio': '16V'
+                        },
+                        common_issues: ['Main board failure', 'Backlight', 'HDMI ports'],
+                        firmware: {
+                            'version': 'PKG6.2775.0000',
+                            'file': 'sony_kd55x80j_pkg62775.bin',
+                            'size': '540MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Diagram', 'Main Board Layout']
+                    },
+                    'KD65X85J': {
+                        type: '4K HDR TV',
+                        size: '65 inch',
+                        resolution: '4K UHD',
+                        year: '2022',
+                        panel: 'LED',
+                        smart_platform: 'Android TV',
+                        power: {
+                            standby: '3.3V',
+                            main: '24V',
+                            backlight: '48V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 24V': '24V ±1V',
+                            'Backlight': '48V ±3V',
+                            'T-Con VGH': '28V',
+                            'T-Con VGL': '-7V',
+                            'Audio': '18V'
+                        },
+                        common_issues: ['Power supply failure', 'Backlight strips', 'Main board'],
+                        firmware: {
+                            'version': 'PKG6.2885.0000',
+                            'file': 'sony_kd65x85j_pkg62885.bin',
+                            'size': '560MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'Main Board Guide']
+                    }
+                    // Add 177 more Sony models...
                 }
             },
             'changhong': {
@@ -843,7 +1216,8 @@
                             'version': 'V1.2.3',
                             'file': 'changhong_chi32s1_v123.bin',
                             'size': '380MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Schematic', 'Main Board Guide']
                     },
                     'CHi43S2': {
                         type: 'LED Smart TV',
@@ -871,9 +1245,39 @@
                             'version': 'V2.1.5',
                             'file': 'changhong_chi43s2_v215.bin',
                             'size': '410MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'Android System Guide']
+                    },
+                    'CHi50U3': {
+                        type: '4K UHD TV',
+                        size: '50 inch',
+                        resolution: '4K UHD',
+                        year: '2021',
+                        panel: 'LED',
+                        smart_platform: 'Android',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '25V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power supply failure', 'Backlight strips', 'Main board'],
+                        firmware: {
+                            'version': 'V3.0.1',
+                            'file': 'changhong_chi50u3_v301.bin',
+                            'size': '430MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Diagram', 'Main Board Layout']
                     }
-                    // Add 118 more Changhong models...
+                    // Add 117 more Changhong models...
                 }
             },
             'orient': {
@@ -905,9 +1309,39 @@
                             'version': 'V1.0.8',
                             'file': 'orient_ort32led_v108.bin',
                             'size': '350MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'Main Board Guide']
+                    },
+                    'ORT40LED': {
+                        type: 'LED TV',
+                        size: '40 inch',
+                        resolution: 'Full HD',
+                        year: '2019',
+                        panel: 'LED',
+                        smart_platform: 'Basic',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '24V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power board failure', 'Backlight strips', 'Main board'],
+                        firmware: {
+                            'version': 'V1.2.5',
+                            'file': 'orient_ort40led_v125.bin',
+                            'size': '370MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Schematic', 'Main Board Layout']
                     }
-                    // Add 79 more Orient models...
+                    // Add 78 more Orient models...
                 }
             },
             'akira': {
@@ -939,9 +1373,39 @@
                             'version': 'V1.1.2',
                             'file': 'akira_ak32led_v112.bin',
                             'size': '340MB'
-                        }
+                        },
+                        datasheets: ['Service Manual', 'Power Supply Schematic', 'Main Board Guide']
+                    },
+                    'AK40LED': {
+                        type: 'LED TV',
+                        size: '40 inch',
+                        resolution: 'Full HD',
+                        year: '2020',
+                        panel: 'LED',
+                        smart_platform: 'Basic',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '24V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power supply failure', 'Backlight strips', 'Main board'],
+                        firmware: {
+                            'version': 'V1.3.4',
+                            'file': 'akira_ak40led_v134.bin',
+                            'size': '360MB'
+                        },
+                        datasheets: ['Service Manual', 'Power Board Schematic', 'Main Board Layout']
                     }
-                    // Add 59 more Akira models...
+                    // Add 58 more Akira models...
                 }
             },
             'china': {
@@ -973,9 +1437,68 @@
                             'version': 'V3.5.1',
                             'file': 'china_cn32led_v351.bin',
                             'size': '390MB'
-                        }
+                        },
+                        datasheets: ['Generic Service Manual', 'Power Supply Schematic', 'Main Board Guide']
+                    },
+                    'CN43LED': {
+                        type: 'LED TV',
+                        size: '43 inch',
+                        resolution: 'Full HD',
+                        year: '2021',
+                        panel: 'LED',
+                        smart_platform: 'Android',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '24V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power board failure', 'Backlight strips', 'Main board'],
+                        firmware: {
+                            'version': 'V4.2.7',
+                            'file': 'china_cn43led_v427.bin',
+                            'size': '420MB'
+                        },
+                        datasheets: ['Generic Service Manual', 'Power Board Schematic', 'Main Board Layout']
+                    },
+                    'CN50UHD': {
+                        type: '4K UHD TV',
+                        size: '50 inch',
+                        resolution: '4K UHD',
+                        year: '2022',
+                        panel: 'LED',
+                        smart_platform: 'Android',
+                        power: {
+                            standby: '3.3V',
+                            main: '12V',
+                            backlight: '24V',
+                            usb: '5V'
+                        },
+                        voltages: {
+                            'Standby': '3.3V DC ±0.2V',
+                            'Main 12V': '12V ±0.5V',
+                            'Backlight': '24V ±2V',
+                            'T-Con VGH': '25V',
+                            'T-Con VGL': '-5V',
+                            'Audio': '15V'
+                        },
+                        common_issues: ['Power supply failure', 'Backlight strips', 'Main board'],
+                        firmware: {
+                            'version': 'V5.1.3',
+                            'file': 'china_cn50uhd_v513.bin',
+                            'size': '450MB'
+                        },
+                        datasheets: ['Generic Service Manual', 'Power Supply Diagram', 'Main Board Guide']
                     }
-                    // Add 159 more China generic models...
+                    // Add 157 more China generic models...
                 }
             }
         };
@@ -1005,8 +1528,32 @@
                 size: '380MB',
                 date: '2023-03-10',
                 checksum: 'c3d4e5f6g7h8'
+            },
+            'sony_kd43x70_pkg62665.bin': {
+                model: 'KD43X70',
+                brand: 'Sony',
+                version: 'PKG6.2665.0000',
+                size: '520MB',
+                date: '2023-04-05',
+                checksum: 'd4e5f6g7h8i9'
+            },
+            'orient_ort32led_v108.bin': {
+                model: 'ORT32LED',
+                brand: 'Orient',
+                version: 'V1.0.8',
+                size: '350MB',
+                date: '2023-05-12',
+                checksum: 'e5f6g7h8i9j0'
+            },
+            'akira_ak32led_v112.bin': {
+                model: 'AK32LED',
+                brand: 'Akira',
+                version: 'V1.1.2',
+                size: '340MB',
+                date: '2023-06-18',
+                checksum: 'f6g7h8i9j0k1'
             }
-            // Add 497 more firmware files...
+            // Add 494 more firmware files...
         };
 
         // Login System
@@ -1243,6 +1790,7 @@
             
             html += `</div></div>`;
             document.getElementById('modelDetails').innerHTML = html;
+            document.getElementById('datasheetSection').innerHTML = '';
         }
 
         function showModelDetails(brand, model) {
@@ -1310,6 +1858,32 @@
             `;
             
             document.getElementById('modelDetails').innerHTML = html;
+            
+            // Show datasheets for this model
+            showDatasheets(brand, model);
+        }
+
+        function showDatasheets(brand, model) {
+            const specs = TV_DATABASE[brand].models[model];
+            let html = `
+                <div class="datasheet-section">
+                    <h3>📄 Available Datasheets for ${TV_DATABASE[brand].name} ${model}</h3>
+            `;
+            
+            specs.datasheets.forEach(datasheet => {
+                html += `
+                    <div class="datasheet-card">
+                        <h4>${datasheet}</h4>
+                        <p>Complete technical documentation and schematics for ${TV_DATABASE[brand].name} ${model}</p>
+                        <button class="btn btn-primary" onclick="downloadDatasheet('${brand}', '${model}', '${datasheet}')">
+                            <i class="fas fa-download"></i> Download Datasheet
+                        </button>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            document.getElementById('datasheetSection').innerHTML = html;
         }
 
         // Firmware Functions
@@ -1361,6 +1935,10 @@
 
         function downloadFirmware(filename) {
             alert(`📥 Downloading firmware: ${filename}\n\nThis is a simulation. In real implementation, file would be downloaded.`);
+        }
+
+        function downloadDatasheet(brand, model, datasheet) {
+            alert(`📥 Downloading datasheet: ${datasheet} for ${TV_DATABASE[brand].name} ${model}\n\nThis is a simulation. In real implementation, PDF would be downloaded.`);
         }
 
         function uploadFirmware() {
